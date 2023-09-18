@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML Intro</title>
-</head>
-<body>
-    Hello!
-    <h1>Lorem1</h1>
-    <h2>Lorem2</h2>
-    <h3>Lorem3</h3>
-    <h4>Lorem4</h4>
-    <h5>Lorem5</h5>
-    <h6>Lorem6</h6>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, voluptate! Necessitatibus odio, temporibus aliquid molestias enim corrupti dignissimos quaerat ex!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero iusto nemo consectetur odit sapiente eveniet vero ut iste repellendus quaerat.</p>
-    <img src="http://placekitten.com/300" alt="cute kitten photo">
-    <a href="https://google.com">Go to Google!</a>
-</body>
+    <style>
+        /* Element selector */
+        h1 {
+            color: red;
+            background-color: yellow;
+        }
+    /* ID Selector */
+    #hobbies {
+        border: 2px solid green;
+    }
+
+    /* Apply to all li elements that are children of #hobbies */
+
+    #hobbies li {
+      background: lightblue;
+    }
+
+    li:hover {
+      background: lightgreen;
+    }
+
+    /* Class selector */
+        .big {
+            font-size: 2em;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+    <h4>Header 4</h4>
+    <h5>Header 5</h5>
+    <h6>Header 6</h6>
+    <p class="big">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet, voluptate!
+      Necessitatibus odio, temporibus aliquid molestias enim corrupti
+      dignissimos quaerat ex!
+    </p>
+    <p >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero iusto nemo
+      consectetur odit sapiente eveniet vero ut iste repellendus quaerat.
+    </p>
+    <img src="http://placekitten.com/300" alt="cute kitten photo" />
+    <a class="big" href="https://google.com">Go to Google!</a>
+    <ul id="hobbies">   
+        <li>Coding</li>
+        <li>Cooking</li>
+        <li>Dancing</li>
+        <li>Reading</li>
+    </ul>
+    <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
+  </body>
 </html>
