@@ -5,7 +5,18 @@
 }
 
 @keyframes colorful-text {
-    
+    0% {
+        background: salmon;
+
+    }
+    50%{
+        background: yellow;
+        transform: translate(100px);
+    }
+    100% {
+        background: blue;
+        transform: translate(100px) rotate(45deg);
+    }
 }
 
 div {
@@ -15,11 +26,11 @@ div {
     height: 100px;
     background: salmon;
     transition: transform 2s;
-    
 }
 
 div:hover {
-    transform: translateX(100px) rotate(90deg) scale(0.5, 2);
-    left: 0;
+    animation: colorful-text 3s alternate both;
+    /* transform: translateX(100px) rotate(90deg) scale(0.5, 2);
+    left: 0; */
     
 }
