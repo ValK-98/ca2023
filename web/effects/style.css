@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes colorful-text {
+    
+}
+
+div {
+    position: relative;
+    /* margin-left: -90px; */
+    width: 100px;
+    height: 100px;
+    background: salmon;
+    transition: transform 2s;
+    
+}
+
+div:hover {
+    transform: translateX(100px) rotate(90deg) scale(0.5, 2);
+    left: 0;
+    
+}
