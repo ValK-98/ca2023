@@ -13,16 +13,40 @@ main {
   min-height: 90vh;
 }
 
+#photo-container {
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+#photo-of-me {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border: solid 6px black;
+}
+
+#about-me {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    height: 39rem;
+    padding: 1em;
+}
+
+#about-me-desc {
+    padding: 1em;
+}
+
 .container {
   background: #d9d9d9;
   border-radius: 2.125rem;
   border: solid 1px black;
 }
 
-#about-me {
-  width: 16rem;
-  height: 39rem;
-}
 
 #links {
   display: flex;
