@@ -8,7 +8,7 @@
 :root {
   --container-color: #a6b1ca;
   --background-color: #8e94f2;
-  --hover-color: #9fa0ff;
+  --hover-color: #7e80f0;
   /* --mauve: #bbadff; */
   --section-color: #f9f7ff;
   --shadow: rgb(131, 128, 128);
@@ -104,16 +104,22 @@ main {
 
 footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: black;
   width: 100%;
   height: 10vh;
+  flex-wrap: wrap;
 }
 
 .footer-links {
-  display: flex;
   color: white;
-  flex-direction: column;
   margin: 2rem;
+  text-decoration: none;
+}
+
+#copyright {
+  margin-top: 2em;
+  color: white;
 }
