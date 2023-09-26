@@ -6,6 +6,16 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --cool-grey: #a6b1ca;
+  --tropical-indigo: #8e94f2;
+  --vita-blue: #9fa0ff;
+  --mauve: #bbadff;
+  --light-purple: #f9f7ff;
+  --shadow: rgb(131, 128, 128);
+  background-color: var(--tropical-indigo);
+}
+
 main {
   display: flex;
   justify-content: space-evenly;
@@ -25,7 +35,7 @@ main {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border: solid 6px black;
+  box-shadow: 2px 2px 4px var(--shadow);
 }
 
 #about-me-container {
@@ -41,6 +51,9 @@ main {
 #about-me-desc {
   padding: 1em;
   letter-spacing: 0.05rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2rem;
 }
 
 #contact-links {
@@ -54,9 +67,9 @@ main {
 }
 
 .container {
-  background: #d9d9d9;
+  background: var(--cool-grey);
   border-radius: 2.125rem;
-  border: solid 1px black;
+  box-shadow: 2px 2px 4px var(--shadow);
 }
 
 #link-container {
@@ -72,7 +85,7 @@ main {
 }
 
 .section-links:hover {
-  background-color: black;
+  background-color: var(--vita-blue);
   color: white;
 }
 
@@ -83,9 +96,9 @@ main {
   width: 17rem;
   height: 7rem;
   border-radius: 0.625rem;
-  border: solid 1px black;
+  box-shadow: 2px 2px 4px var(--shadow);
   margin: 0rem 1rem 0rem 1rem;
-  background: #fff;
+  background: var(--light-purple);
   cursor: pointer;
 }
 
