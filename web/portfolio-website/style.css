@@ -9,7 +9,6 @@
   --container-color: #a6b1ca;
   --background-color: #8e94f2;
   --hover-color: #7e80f0;
-  /* --mauve: #bbadff; */
   --section-color: #f9f7ff;
   --shadow: rgb(131, 128, 128);
   background-color: var(--background-color);
@@ -120,6 +119,30 @@ footer {
 }
 
 #copyright {
-  margin-top: 2em;
+  margin-top: 1em;
   color: white;
+}
+
+@media only screen and (max-width: 1025px) {
+  #link-container {
+    width: 16.375rem;
+    height: 39.375rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #link-container {
+    width: 10rem;
+    height: 31rem;
+  }
+
+  #about-me-container {
+    width: 9rem;
+    height: 22rem;
+  }
+
+  #photo-container {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
 }
