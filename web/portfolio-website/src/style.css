@@ -91,6 +91,7 @@
   margin: 0rem 1rem 0rem 1rem;
   background: var(--section-color);
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .section-links:hover {
@@ -99,6 +100,8 @@
 .section-links a {
   text-decoration: none;
   color: black;
+  height: 100%;
+  width: 100%;
 }
 
 .section-links:hover a {
