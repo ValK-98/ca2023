@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", "Roboto", sans-serif;
+}
+
+:root {
+  --container-color: #a6b1ca;
+  --background-color: #8e94f2;
+  --hover-color: #7e80f0;
+  --section-color: #f9f7ff;
+  --shadow: rgb(131, 128, 128);
+  background-color: var(--background-color);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main {
+  justify-content: space-evenly;
+  min-height: 90vh;
+}
+
+#photo-container {
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+#photo-of-me {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 2px 2px 4px var(--shadow);
+}
+
+#about-me-container {
+  flex-direction: column;
+  width: 16rem;
+  height: 35rem;
+  padding: 1em;
+}
+
+#about-me-desc {
+  padding: 1em;
+  letter-spacing: 0.05rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2rem;
+}
+
+#contact-links {
+  display: flex;
+  margin-top: 2em;
+}
+
+.contact-icon {
+  width: 2rem;
+  height: 2rem;
+  margin: 0rem 1rem 0rem 1rem;
+}
+
+.container {
+  background: var(--container-color);
+  border-radius: 2.125rem;
+  box-shadow: 2px 2px 4px var(--shadow);
+}
+
+#link-container {
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem;
+  width: 41rem;
+  height: 26rem;
+  padding: 0.5rem 1.5rem;
+}
+
+
+.section-links {
+  width: 17rem;
+  height: 7rem;
+  border-radius: 0.625rem;
+  box-shadow: 2px 2px 4px var(--shadow);
+  margin: 0rem 1rem 0rem 1rem;
+  background: var(--section-color);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.section-links:hover {
+  background-color: var(--hover-color);
+}
+.section-links a {
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.section-links:hover a {
+  color: white;
+}
+
+footer {
+  flex-direction: column;
+  background-color: black;
+  width: 100%;
+  height: 10vh;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  color: white;
+  margin: 2rem;
+  text-decoration: none;
+}
+
+#copyright {
+  margin-top: 1em;
+  color: white;
+}
+
+@media only screen and (max-width: 1025px) {
+  #link-container {
+    width: 16.375rem;
+    height: 39.375rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  body {
+    font-size: 10px;
+  }
+
+  #link-container {
+    width: 10rem;
+    height: 31rem;
+  }
+
+  .section-links {
+    width: 9rem;
+    height: 4.4rem;
+    margin: 0rem;
+  }
+
+  #about-me-container {
+    width: 8rem;
+    height: 22rem;
+  }
+
+  #about-me-desc {
+    padding: 0em;
+    letter-spacing: 0rem;
+    line-height: 1rem;
+  }
+
+  #photo-container {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .footer-links {
+    margin: 0.1rem;
+  }
+}
