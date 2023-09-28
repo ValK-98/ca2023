@@ -22,3 +22,15 @@ flex-direction: column;
   height: 4rem;
   margin: 0rem 1rem 0rem 1rem;
 }
+
+@media only screen and (max-width: 640px) {
+  #contact-me {
+    width: 15rem;
+  height: 7rem;
+  }
+  .contact-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0rem 1rem 0rem 1rem;
+  }
+}
