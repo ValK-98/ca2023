@@ -7,6 +7,13 @@
   padding: 0rem 1.5rem;
   flex-direction: column;
   margin: 1.5em 0em;
+  transition: 1s ease;
+}
+
+.container:hover {
+  width: 44.1875rem;
+  height: 44.1875rem;
+  background-color: var(--hover-color);
 }
 
 .container img {
@@ -16,20 +23,20 @@
   object-fit: cover;
 }
 
-.blog-links {
-  text-decoration: none;
-  color: white;
+.container p {
+  margin-top: 1em;
+  padding: 0rem 1rem;
 }
 
-h1 {
+.container h1 {
   margin-bottom: 1em;
   font-weight: bold;
   font-size: 1.5em;
 }
 
-p {
-  margin-top: 1em;
-  padding: 0rem 1rem;
+.blog-links {
+  text-decoration: none;
+  color: white;
 }
 
 @media only screen and (max-width: 640px) {
@@ -41,11 +48,16 @@ p {
     width: 15.92688rem;
     height: 30rem;
   }
-   h1 {
-    font-size: 1.5em;
-  } 
+  .container:hover {
+    width: 17rem;
+    height: 31rem;
+  }
 
-  p {
-    font-size: 12px;
-  } 
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .container p {
+    font-size: 10px;
+  }
 }
