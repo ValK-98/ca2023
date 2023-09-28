@@ -17,7 +17,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-p {
+main p {
   font-weight: bold;
 }
 
@@ -33,7 +33,6 @@ p {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  box-shadow: 2px 2px 4px var(--shadow);
 }
 
 @media only screen and (max-width: 640px) {
