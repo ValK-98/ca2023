@@ -25,7 +25,7 @@
 # else: 
 #     print('F')
 
-name = input('What is your name? ')
+# name = input('What is your name? ')
 
 # if name == 'Harry' or 'Ron' or 'Hermoine':
 #     print('Gryffindor')
@@ -34,10 +34,26 @@ name = input('What is your name? ')
 # else:
 #     print('Mudblood!')
 
-match name :
-    case 'Harry' | 'Ron' | 'Hermoine':
-        print('Gyffindor')
-    case 'Draco':
-        print('Slytherin')
-    case _:
-        print('Mudblood!')
+# match name :
+#     case 'Harry' | 'Ron' | 'Hermoine':
+#         print('Gyffindor')
+#     case 'Draco':
+#         print('Slytherin')
+#     case _:
+#         print('Mudblood!')
+
+
+# Write a Python program to calculate and 
+# display the surface area of a user-chosen geometric shape. 
+# The 3 possible choices are a square, a circle and a triangle.
+a = 0
+b = 0
+h = 0
+r = 0
+triangle_area = float(0.5 * b * h)
+square_area = float(a**2)
+circle_area = float(3.14 * r**2)
+
+if input('Square, circle or triangle? ').lower() == "square":
+    a = input('Length of side: ')
+    print(square_area)
