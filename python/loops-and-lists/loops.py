@@ -8,3 +8,7 @@
 #     print(f'Hello {spam}')
 
 import random 
+
+count = int(input('How many random integers?'))
+for i in range(count):
+    print(random.randint(1, 100))
