@@ -1,9 +1,29 @@
 class Character: 
-    def __init__(self, name, race): 
+    def __init__(self, name, race, health, attack): 
         self.name = name 
         self.race = race
-        self.copper = 0
+        self.health = health 
+        self.attack = attack
         self.inv= Inventory([], 0, 0, 0)
+    
+    def battle(self, other):
+                print(f'{self.name} attacks {other.name}!')
+
+class Mage(Character):
+       def battle(self, other):
+                print(f'{self.name} casts a wicked spell at {other.name}!')
+
+class Burglar(Character):
+       def battle(self, other):
+                print(f'{self.name} sneaks in a stealth attack on {other.name}!')
+
+class Wizard(Character):
+       def battle(self, other):
+                print(f'{self.name} summons an orc minion, which attacks {other.name}!')
+
+class Ranger(Character):
+       def battle(self, other):
+                print(f'{self.name} launches a brutal melee attack on{other.name}!')    
 
 class Chest:
     def __init__(self, items, gold, silver, copper):
