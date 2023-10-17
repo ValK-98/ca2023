@@ -14,7 +14,7 @@ frodo.battle(aragorn)
 
 # print(chest.inv.__dict__)
 # print(aragorn.__dict__)
-# print(frodo.__dict__)
+print(frodo.__dict__)
 # print(galadriel.__dict__)
 
 # chest.inv.transfer(frodo.inv)

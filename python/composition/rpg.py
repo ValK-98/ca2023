@@ -10,8 +10,18 @@ class Character:
                 print(f'{self.name} attacks {other.name}!')
 
 class Mage(Character):
+       def __init__(self, name, race, health, attack): 
+        self.name = name 
+        self.race = race
+        self.race = 100
+        self.health = health 
+        self.attack = attack
+        self.inv= Inventory([], 0, 0, 0)
+
        def battle(self, other):
                 print(f'{self.name} casts a wicked spell at {other.name}!')
+                self.mana -= 20
+
 
 class Burglar(Character):
        def battle(self, other):
@@ -23,7 +33,10 @@ class Wizard(Character):
 
 class Ranger(Character):
        def battle(self, other):
-                print(f'{self.name} launches a brutal melee attack on{other.name}!')    
+                print(f'{self.name} launches a brutal melee attack on{other.name}!')
+
+       def recruit_undead(self):
+             pass  
 
 class Chest:
     def __init__(self, items, gold, silver, copper):
