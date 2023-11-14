@@ -13,21 +13,25 @@ def spam():
     person = { 'name': 'John', 'age': 21 }
     return person
 
-@app.route('/hello')
-def hello():
-    print(request.args.get('name'))
-    name = 'Jack'
-    return { 'message': f'Hello, {name}!'}
+@app.route('/hello/<name>')
+def hello(name):
+    # name = request.args.get('name')
+    # name = 'Jack'
+    return { 'message': f'Hello, {name}!' }
 
-@app.route('/add')
-def add():
-    num1 = int(request.args.get('num1'))
-    num2 = int(request.args.get('num2'))
+@app.route('/add/<int:num1>/<int:num2>')
+def add(num1, num2):
     return { 'result': num1 + num2 }
+
+
+@app.errorhandler(TypeError)
+def type_error(error):
+    return { 'error': str(error) }, 400
 
 @app.errorhandler(404)
 def not_found(error):
-    return {'error': str(error)}, 404
+    return { 'error': str(error) }, 404
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
