@@ -1,12 +1,14 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
+from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://trello_dev:nahui@localhost:5432/trello'
 
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
 
 class Card(db.Model):
     __tablename__ = 'cards'
@@ -16,6 +18,10 @@ class Card(db.Model):
     status = db.Column(db.String(30))
     date_created = db.Column(db.Date())
 
+
+class CardSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'title', 'description', 'status', 'date_created')
 
 @app.cli.command('db_create')
 def db_create():
@@ -54,14 +60,12 @@ def db_seed():
     print('Database seeded')
 
 
-@app.cli.command('all_cards')
+@app.route('/cards')
 def all_cards():
     # select * from cards;
     stmt = db.select(Card).where(db.or_(Card.status != 'Done', Card.id > 2)).order_by(Card.title)
     cards = db.session.scalars(stmt).all()
-    # print(cards.all())
-    for card in cards:
-        print(card.__dict__)
+    return CardSchema(many=True).dump(cards)
 
 @app.route('/')
 def index():
