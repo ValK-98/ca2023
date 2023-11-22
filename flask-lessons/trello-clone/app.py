@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 from flask_marshmallow import Marshmallow
 from flask_bcrypt import Bcrypt
+from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
 
@@ -93,22 +94,42 @@ def db_seed():
 
 @app.route('/users/register', methods=['POST'])
 def register():
-    # Parse incoming POST body through the schema
-    user_info = UserSchema(exclude=['id']).load(request.json)
-    # Create a new user with the parsed data
-    user = User(
-        email=user_info['email'],
-        password=bcrypt.generate_password_hash(user_info['password']).decode('utf8'),
-        name=user_info.get('name', '')
-    )
+    try:
+        # Parse incoming POST body through the schema
+        user_info = UserSchema(exclude=['id']).load(request.json)
+        # Create a new user with the parsed data
+        user = User(
+            email=user_info['email'],
+            password=bcrypt.generate_password_hash(user_info['password']).decode('utf8'),
+            name=user_info.get('name', '')
+        )
 
-    # Add and commit the new user to the database
-    db.session.add(user)
-    db.session.commit()
+        # Add and commit the new user to the database
+        db.session.add(user)
+        db.session.commit()
 
-    # Return the new user
-    return UserSchema(exclude=['password']).dump(user), 201
+        # Return the new user
+        return UserSchema(exclude=['password']).dump(user), 201
+    except IntegrityError:
+        return {'error': 'Email address already in use'}, 409
    
+
+@app.route('/users/login', methods=['POST'])
+def login():
+    # Parse incoming POST body through the schema
+    user_info = UserSchema(exclude=['id', 'name', 'is_admin']).load(request.json)
+    # Select user with email that matches the one in the POST body
+    stmt = db.select(User).where(User.email == user_info['email'])
+    user = db.session.scalar(stmt)
+    # Check password has
+    if bcrypt.check_password_hash(user.password, user_info['password']):
+        return UserSchema(exclude=['password']).dump(user)
+    else:
+        return {'error': 'Invalid email or password'}, 401
+    # Create a JWT Token 
+    
+    # Send the token to client
+    return 'ok'
 
 
 
