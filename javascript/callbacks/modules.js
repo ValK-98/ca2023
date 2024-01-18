@@ -1,3 +1,5 @@
-import PI from 'math'
+import math from './math.js'
 
-console.log(PI);
+console.log(math);
+console.log(math.add(10, 20));
+console.log(math.PI);
