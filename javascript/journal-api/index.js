@@ -10,7 +10,7 @@ const entries = [
 ];
 
 mongoose
-  .connect("")
+  .connect("mongodb+srv://oleg:oleg@cluster0.anzduji.mongodb.net/journal?retryWrites=true&w=majority")
   .then((m) =>
     console.log(
       m.connection.readyState === 1
