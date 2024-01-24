@@ -1,5 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const categories = ["Food", "Gaming", "Coding", "Other"];
 
@@ -10,7 +13,7 @@ const entries = [
 ];
 
 mongoose
-  .connect("mongodb+srv://oleg:oleg@cluster0.anzduji.mongodb.net/journal?retryWrites=true&w=majority")
+  .connect(process.env.DB_URI)
   .then((m) =>
     console.log(
       m.connection.readyState === 1
