@@ -1,70 +1,71 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import express from 'express'
+import { EntryModel, CategoryModel } from './db.js'
 
-dotenv.config();
+const categories = ['Food', 'Gaming', 'Coding', 'Other']
 
-const categories = ["Food", "Gaming", "Coding", "Other"];
+const app = express()
 
-const entries = [
-  { category: "Food", content: "Pizza is yummy!" },
-  { category: "Coding", content: "Coding is fun!" },
-  { category: "Gaming", content: "Skyrim is for the Nords" },
-];
+app.use(express.json())
 
-mongoose
-  .connect(process.env.DB_URI)
-  .then((m) =>
-    console.log(
-      m.connection.readyState === 1
-        ? "MongoDB connected!"
-        : "MongoDB failed to connect"
-    )
-  )
-  .catch((err) => console.error(err));
+app.get('/', (req, res) => res.send({ info: 'Journal API' }))
 
-const entriesSchema = new mongoose.Schema({
-  category: { type: String, required: true },
-  content: { type: String, required: true },
-});
+app.get('/categories', async (req, res) => res.send(await CategoryModel.find()))
 
-const EntryModel = mongoose.model("Entry", entriesSchema);
+app.get('/entries', async (req, res) => res.send(await EntryModel.find()))
 
-const app = express();
+app.get('/entries/:id', async (req, res) => {
+    const entry = await EntryModel.findById(req.params.id)
+    if (entry) {
+        res.send(entry)
+    } else {
+        res.status(404).send({ error: 'Entry not found' })
+    }
+})
 
-app.use(express.json());
+app.post('/entries', async (req, res) => {
+    try {
+        // Get entry data from the request
+        // console.log(req.body)
+        // TODO: Validate
+        // Create a new entry object
+        // Push the new entry to the array
+        // entries.push(req.body)
+        const insertedEntry = await EntryModel.create(req.body)
+        // Respond with 201 and the created entry
+        res.status(201).send(insertedEntry)
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
 
-app.get("/", (req, res) => res.send({ info: "Journal API" }));
+app.put('/entries/:id', async (req, res) => {
+    try {
+        const updatedEntry = await EntryModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        if (updatedEntry) {
+            res.send(updatedEntry)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
 
-app.get("/categories", (req, res) => res.send(categories));
+app.delete('/entries/:id', async (req, res) => {
+    try {
+        const deletedEntry = await EntryModel.findByIdAndDelete(req.params.id)
+        if (deletedEntry) {
+            res.sendStatus(204)
+        } else {
+            res.status(404).send({ error: 'Entry not found' })
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err.message })
+    }
+})
 
-app.get("/entries", (req, res) => res.send(entries));
 
-app.get("/entries/foo", (req, res) => res.send({ foo: "bar" }));
-
-app.get("/entries/:id", (req, res) => {
-  const entry = entries[req.params.id - 1];
-  if (entry) {
-    res.send(entry);
-  } else {
-    res.status(404).send({ error: "Entry not found" });
-  }
-});
-
-app.post("/entries", async (req, res) => {
-  try {
-    // Get entry data from the request
-    // console.log(req.body)
-    // TODO: Validate
-    // Create a new entry object
-    // Push the new entry to the array
-    // entries.push(req.body)
-    const insertedEntry = await EntryModel.create(req.body);
-    // Respond with 201 and the created entry
-    res.status(201).send(insertedEntry);
-  } catch (err) {
-    res.status(400).send({ error: err.message });
-  }
-});
-
-app.listen(8001);
+app.listen(8003)
